@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Evolution Simulator</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+
+  <body>
+    <script src="./bootstrap.js"></script>
+    <input type="checkbox" class="openSidebar" id="openSidebar" />
+    <label for="openSidebar" class="sidebarIconToggle">
+      <div class="spinner diagonal part-1"></div>
+      <div class="spinner horizontal"></div>
+      <div class="spinner diagonal part-2"></div>
+    </label>
+    <div id="sidebar" class="sidebar">
+      <div class="info">
+        <div class="sidebarHeader">World Info</div>
+        <div class="info-item">Population</div>
+        <div class="info-value" id="population"></div>
+        <div class="sidebarHeader">Eye Colour</div>
+        <div class="info-item">Green Eyes</div>
+        <div class="info-value" id="green_eyes"></div>
+        <div class="info-item">Blue Eyes</div>
+        <div class="info-value" id="blue_eyes"></div>
+        <div class="info-item">Purple Eyes</div>
+        <div class="info-value" id="purple_eyes"></div>
+        <div class="sidebarHeader">Skin Colour</div>
+        <div class="info-item">Green Skin</div>
+        <div class="info-value" id="green_skin"></div>
+        <div class="info-item">Red Skin</div>
+        <div class="info-value" id="red_skin"></div>
+        <div class="info-item">Yellow Skin</div>
+        <div class="info-value" id="yellow_skin"></div>
+      </div>
+      <form>
+        <div class="sidebarHeader">Options</div>
+        <div>
+          <label class="option">
+            Starting Population
+            <input
+              type="number"
+              min="0"
+              max="100"
+              id="starting_pop"
+              name="starting_pop"
+            />
+          </label>
+        </div>
+        <div>
+          <label class="option">
+            Max Population
+            <input
+              type="number"
+              min="10"
+              max="1000"
+              id="max_creatures"
+              name="max_creatures"
+            />
+          </label>
+        </div>
+        <div>
+          <label class="option">
+            Lifespan
+            <input
+              type="number"
+              min="1"
+              max="10"
+              step="0.1"
+              id="lifespan"
+              name="lifespan"
+            />
+          </label>
+        </div>
+        <div>
+          <label class="option">
+            Resolution
+            <input
+              type="number"
+              min="1"
+              max="10"
+              step="0.1"
+              id="resolution"
+              name="resolution"
+            />
+          </label>
+        </div>
+        <div>
+          <label class="option">
+            Speed
+            <input
+              type="range"
+              min="0"
+              max="150"
+              value="50"
+              id="sim_speed"
+              name="sim_speed"
+            />
+          </label>
+        </div>
+        <input type="button" class="button" id="reset_sim" value="Restart" />
+        <input class="button" type="reset" value="Restore Defaults" />
+      </form>
+    </div>
+    <!-- sidebar -->
+    <!-- infobar -->
+    <div id="infobar" class="infobar">
+      <div class="info">
+        <div class="sidebarHeader">Creature Info</div>
+        <div class="info-item">Eye Genes</div>
+        <div class="info-value" id="eye_genes"></div>
+        <div class="info-item">Skin Genes</div>
+        <div class="info-value" id="skin_genes"></div>
+        <div class="info-item">Speed Genes</div>
+        <div class="info-value" id="speed_genes"></div>
+      </div>
+      <canvas id="viewer"></canvas>
+    </div>
+    <!-- infobar -->
+    <canvas id="world"></canvas>
+    <!-- Resized to fit screen on load -->
+    <noscript
+      >This page contains webassembly and javascript content, please enable
+      javascript in your browser.</noscript
+    >
+  </body>
+</html>
