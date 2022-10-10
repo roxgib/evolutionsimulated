@@ -30,6 +30,8 @@ version = "0.3.4"
 features = [
   'HtmlCanvasElement',
   'CanvasRenderingContext2d',
+  'ImageBitmap',
+  'console',
 ]
 
 # The `console_error_panic_hook` crate provides better debugging of panics by

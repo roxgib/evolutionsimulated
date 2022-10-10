@@ -1,55 +1,34 @@
 use std::fmt::Display;
 
 #[derive(Copy, Clone, Debug, PartialEq, Eq, Hash)]
-pub enum EyeColour {
-    Green,
-    Blue,
-    Purple,
+pub enum ColourGene {
+    Orange = 0,
+    Red = 1,
+    LBlue = 2,
+    DBlue = 3,
+    Black = 4,
+    Yellow = 5,
+    Purple = 6,
 }
 
-impl EyeColour {
-    pub fn new_random() -> Self {
+impl ColourGene {
+    pub fn new_random() -> ColourGene {
         use rand::Rng;
         let mut rng = rand::thread_rng();
         let x: u8 = rng.gen();
-        match x % 3 {
-            0 => EyeColour::Green,
-            1 => EyeColour::Blue,
-            2 => EyeColour::Purple,
-            _ => EyeColour::Green,
+        match x % 7 {
+            0 => ColourGene::Orange,
+            1 => ColourGene::Red,
+            2 => ColourGene::LBlue,
+            3 => ColourGene::DBlue,
+            4 => ColourGene::Black,
+            5 => ColourGene::Yellow,
+            6 => ColourGene::Purple,
+            _ => unreachable!(),
         }
     }
 
-    pub fn colour(first: EyeColour, second: EyeColour) -> EyeColour {
-        if (first as u8) < (second as u8) {
-            first
-        } else {
-            second
-        }
-    }
-}
-
-#[derive(Copy, Clone, Debug, PartialEq, Eq, Hash)]
-pub enum SkinColour {
-    Green,
-    Red,
-    Yellow,
-}
-
-impl SkinColour {
-    pub fn new_random() -> SkinColour {
-        use rand::Rng;
-        let mut rng = rand::thread_rng();
-        let x: u8 = rng.gen();
-        match x % 4 {
-            0 => SkinColour::Green,
-            1 => SkinColour::Yellow,
-            2 => SkinColour::Red,
-            _ => SkinColour::Red,
-        }
-    }
-
-    pub fn colour(first: SkinColour, second: SkinColour) -> SkinColour {
+    pub fn colour(first: ColourGene, second: ColourGene) -> ColourGene {
         if (first as u8) < (second as u8) {
             first
         } else {
@@ -110,8 +89,22 @@ impl Display for Speed {
     fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
         match self {
             Speed::Fast => write!(f, "Fast"),
-            Speed::Medium(a) => if *a { write!(f, "Medium (d)") } else { write!(f, "Medium(r)") },
-            Speed::Slow(a) => if *a { write!(f, "Slow (d)") } else { write!(f, "Slow(r)") },
+            Speed::Medium(a) => if *a { write!(f, "Med(d)") } else { write!(f, "Med(r)") },
+            Speed::Slow(a) => if *a { write!(f, "Slow(d)") } else { write!(f, "Slow(r)") },
+        }
+    }
+}
+
+impl Display for ColourGene {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        match self {
+            ColourGene::Orange => write!(f, "Orange"),
+            ColourGene::Red => write!(f, "Red"),
+            ColourGene::LBlue => write!(f, "LBlue"),
+            ColourGene::DBlue => write!(f, "DBlue"),
+            ColourGene::Black => write!(f, "Black"),
+            ColourGene::Yellow => write!(f, "Yellow"),
+            ColourGene::Purple => write!(f, "Purple"),
         }
     }
 }

@@ -72,6 +72,12 @@ impl Point {
         position
     }
 
+    pub fn direction_to(&self, other: &Point) -> Direction {
+        let dx = other.x - self.x;
+        let dy = other.y - self.y;
+        dy.atan2(dx)
+    }
+
     fn wrap(&mut self) {
         unsafe {
             self.x += WIDTH;
