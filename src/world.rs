@@ -42,8 +42,6 @@ impl World {
     }
 
     pub fn tick(&mut self) {
-        self.direction += rand::random::<f64>();
-        self.direction %= std::f64::consts::TAU;
         if rand::random::<u8>() < 8 {
             self.focus = Point::new_random();
         }

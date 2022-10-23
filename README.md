@@ -5,8 +5,5 @@ Requirements:
 
 To run locally:
 ```
-wasm-pack build
-cd web
-npm install
-npm run start
+./run.sh
 ```

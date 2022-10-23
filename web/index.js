@@ -28,6 +28,7 @@ function _reinitialise() {
     canvas.height = window.innerHeight;
     reinitialise(window.innerWidth, window.innerHeight);
     load_images();
+    initialise_inputs();
 
     let config = JSON.parse(get_config());
     for (let key in config) {

@@ -34,6 +34,8 @@ pub fn reinitialise(mut width: f64, mut height: f64) {
     height /= get_config_().resolution;
     set_config("width", format!("{:?}", width).as_str());
     set_config("height", format!("{:?}", height).as_str());
+    set_config("max_creatures", format!("{:?}", (height*width/800.0) as usize).as_str());
+    set_config("starting_pop", format!("{:?}", (height*width/1200.0) as usize).as_str());
     unsafe {
         WIDTH = get_config_().width;
         HEIGHT = get_config_().height;
@@ -44,7 +46,7 @@ pub fn reinitialise(mut width: f64, mut height: f64) {
             world.debris_locs.push(Point::new_random());
         }
         world.spawn_random_organisms(get_config_().starting_pop);
-        for _ in 0..get_config_().lifespan * 2 {
+        for _ in 0..get_config_().lifespan * 3 {
             world.tick();
         }
     }
